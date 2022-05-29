@@ -13,6 +13,7 @@ import java.util.Map;
 public class BukkitParticleSender extends AbstractBukkitParticleSender {
 
     private final static Map<BParticle, Particle> particleMap;
+    private final static Particle.DustOptions DEFAULT_DUST_OPTIONS = new Particle.DustOptions(Color.RED, 1);
 
     static {
         particleMap = new HashMap<>();
@@ -40,6 +41,9 @@ public class BukkitParticleSender extends AbstractBukkitParticleSender {
 
         if (data instanceof ColorData) extra = ((ColorData) data).getExtra();
 
+        if (particle.getDataType().equals(Particle.DustOptions.class) && data == null)
+            data = DEFAULT_DUST_OPTIONS;
+
         world.spawnParticle(particle, x, y, z, count, offSetX, offSetY, offSetZ, extra, interceptData(data));
     }
 
@@ -60,6 +64,9 @@ public class BukkitParticleSender extends AbstractBukkitParticleSender {
         Particle particle = particleMap.get(lParticle);
 
         if (data instanceof ColorData) extra = ((ColorData) data).getExtra();
+
+        if (particle.getDataType().equals(Particle.DustOptions.class) && data == null)
+            data = DEFAULT_DUST_OPTIONS;
 
         sender.spawnParticle(particle, x, y, z, count, offSetX, offSetY, offSetZ, extra, interceptData(data));
     }
