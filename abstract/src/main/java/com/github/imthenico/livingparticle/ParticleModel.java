@@ -10,7 +10,7 @@ public class ParticleModel<T> {
     private final Object data;
 
     public ParticleModel(T particle, float offSetX, float offSetY, float offSetZ, float extra, int count, Object data) {
-        this.particle = particle;
+        this.particle = Objects.requireNonNull(particle);
         this.offSetX = offSetX;
         this.offSetY = offSetY;
         this.offSetZ = offSetZ;
