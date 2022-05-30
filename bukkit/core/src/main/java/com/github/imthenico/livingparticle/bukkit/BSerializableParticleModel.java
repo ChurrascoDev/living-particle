@@ -14,7 +14,7 @@ public class BSerializableParticleModel extends ParticleModel<BParticle> impleme
 
     private final Object data;
 
-    public BSerializableParticleModel(com.github.imthenico.livingparticle.bukkit.particle.BParticle particle, float offSetX, float offSetY, float offSetZ, float extra, int count, Object data) {
+    public BSerializableParticleModel(BParticle particle, float offSetX, float offSetY, float offSetZ, float extra, int count, Object data) {
         super(particle, offSetX, offSetY, offSetZ, extra, count, data);
         this.data = data;
     }
