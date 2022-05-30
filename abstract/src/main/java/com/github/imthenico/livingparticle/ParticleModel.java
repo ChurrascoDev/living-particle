@@ -1,5 +1,7 @@
 package com.github.imthenico.livingparticle;
 
+import java.util.Objects;
+
 public class ParticleModel<T> {
 
     private final T particle;
@@ -43,5 +45,18 @@ public class ParticleModel<T> {
 
     public Object getData() {
         return data;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ParticleModel<?> that = (ParticleModel<?>) o;
+        return Float.compare(that.offSetX, offSetX) == 0 && Float.compare(that.offSetY, offSetY) == 0 && Float.compare(that.offSetZ, offSetZ) == 0 && Float.compare(that.extra, extra) == 0 && count == that.count && particle.equals(that.particle) && Objects.equals(data, that.data);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(particle, offSetX, offSetY, offSetZ, extra, count, data);
     }
 }
