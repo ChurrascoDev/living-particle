@@ -12,15 +12,8 @@ import java.util.Map;
 @SerializableAs("BParticleModel")
 public class BSerializableParticleModel extends ParticleModel<BParticle> implements ConfigurationSerializable {
 
-    private final Object data;
-
     public BSerializableParticleModel(BParticle particle, float offSetX, float offSetY, float offSetZ, float extra, int count, Object data) {
         super(particle, offSetX, offSetY, offSetZ, extra, count, data);
-        this.data = data;
-    }
-
-    public Object getData() {
-        return data;
     }
 
     @Override
@@ -33,6 +26,7 @@ public class BSerializableParticleModel extends ParticleModel<BParticle> impleme
         objectMap.put("offSetZ", getOffSetZ());
         objectMap.put("count", getCount());
 
+        Object data = getData();
         if (data instanceof ConfigurationSerializable) {
             objectMap.put("data", data);
         }
